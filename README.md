@@ -38,9 +38,32 @@ API キーは https://console.anthropic.com/settings/keys から取得できま�
 | `make setup` | `.env` ファイルを生成 |
 | `make clean` | イメージとボリュームを削除 |
 
+## プロジェクトのマウント
+
+### 単一プロジェクト
+
+```bash
+make run PROJECT=/path/to/myapp   # /workspace にマウント
+```
+
+### 複数プロジェクト
+
+```bash
+make run PROJECTS=/path/to/app1,/path/to/app2
+# /workspace/app1, /workspace/app2 にマウント
+```
+
+`.env` に設定しておけば毎回指定する必要はありません。
+
+```env
+PROJECTS=/path/to/app1,/path/to/app2
+```
+
+未指定の場合は `./workspace` が `/workspace` にマウントされます。
+
 ## ボリューム
 
-- `./workspace`: プロジェクトディレクトリ
+- プロジェクトディレクトリ: 上記の方法で指定
 - `claude-config`: Claude の設定と認証情報 (`~/.claude`)
 
 ## トラブルシューティング
