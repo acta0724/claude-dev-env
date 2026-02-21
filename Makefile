@@ -2,7 +2,6 @@
 
 -include .env
 
-# Generate volume flags for project mounting
 VOLUME_FLAGS := $(shell \
 	if [ -n "$(PROJECTS)" ]; then \
 		echo "$(PROJECTS)" | tr ',' '\n' | while read -r p; do \
