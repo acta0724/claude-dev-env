@@ -4,7 +4,7 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - ./workspace:/workspace
+      - ${PROJECT:-./workspace}:/workspace
       - claude-config:/root/.claude
     working_dir: /workspace
 
@@ -15,7 +15,7 @@ services:
     environment:
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
     volumes:
-      - ./workspace:/workspace
+      - ${PROJECT:-./workspace}:/workspace
       - claude-config:/root/.claude
     working_dir: /workspace
 
