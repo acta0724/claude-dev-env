@@ -1,4 +1,4 @@
-.PHONY: build run run-api login clean setup
+.PHONY: build run run-api login shell clean setup
 
 build:
 	docker compose build
@@ -11,6 +11,9 @@ run-api:
 
 login:
 	docker compose run --rm claude login
+
+shell:
+	docker compose run --rm --entrypoint bash claude
 
 clean:
 	docker compose down --rmi local -v
