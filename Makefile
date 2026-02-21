@@ -1,10 +1,13 @@
-.PHONY: build run login clean setup
+.PHONY: build run run-api login clean setup
 
 build:
 	docker compose build
 
 run:
 	docker compose run --rm claude
+
+run-api:
+	docker compose run --rm claude-api
 
 login:
 	docker compose run --rm claude login
@@ -14,4 +17,4 @@ clean:
 
 setup:
 	cp -n .env.example .env || true
-	@echo ".env created. Set ANTHROPIC_API_KEY or run 'make login' for Claude Max."
+	@echo ".env created. Set ANTHROPIC_API_KEY for 'make run-api'."
